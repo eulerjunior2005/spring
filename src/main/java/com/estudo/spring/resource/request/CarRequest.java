@@ -1,24 +1,24 @@
 package com.estudo.spring.resource.request;
 
 import com.estudo.spring.domain.Car;
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 public class CarRequest implements Serializable {
-    @NotBlank
+    @NotBlank(message = "000002")
     private String brand;
-    @NotBlank
+    @NotBlank(message = "000002")
     private String licensePlate;
-    @NotNull
-    @Positive
+    @NotNull(message = "000003")
+    @Positive(message = "000004")
     private Double valueCar;
 
     public Car buildDomain() {

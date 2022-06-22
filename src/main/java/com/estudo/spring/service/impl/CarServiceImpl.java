@@ -1,6 +1,7 @@
 package com.estudo.spring.service.impl;
 
 import com.estudo.spring.domain.Car;
+import com.estudo.spring.error.exception.NotFoundException;
 import com.estudo.spring.repository.CarRepository;
 import com.estudo.spring.resource.response.CarResponse;
 import com.estudo.spring.service.CarService;
@@ -36,7 +37,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarResponse findById(Integer id) {
-        return buildResponse(carRepository.findById(id).orElseThrow(RuntimeException::new));
+        return buildResponse(carRepository.findById(id).orElseThrow(() -> new NotFoundException(id.toString())));
     }
 
     @Override
